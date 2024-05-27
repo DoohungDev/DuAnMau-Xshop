@@ -2,7 +2,7 @@
     <h1 class="text-xl uppercase bg-green-100 px-2 py-4 my-3 border rounded-lg">Danh sách loại hàng</h1>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-green-100 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-green-100  dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         Lựa chọn
@@ -24,14 +24,14 @@
                     $suadm = "index.php?act=suadm&id=" .$id;  
                     $xoadm = "index.php?act=xoadm&id=" .$id;  
                 ?>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 ">
+                <tr class="bg-white border-b dark:border-gray-700">
+                    <td scope="row" class="px-6 py-4 font-medium text-black-900 ">
                         <input type="checkbox">
                     </td>
                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 ">
                         <?=$danhmuc['id']?>
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 text-black py-4">
                     <?=$danhmuc['name']?>
                     </td>
                     <td class="px-6 py-4">
