@@ -1,19 +1,20 @@
 <?php
-    function loadAll_pro(){
-        $sql = "SELECT * FROM sanpham order by id ASC";
+    function loadAll_pro($kyw,$iddm){
+        $sql = "SELECT * FROM sanpham WHERE 1";
+        if($kyw != ""){
+            $sql.=" and name like '%".$kyw."%'";
+        }
+        if($iddm > 0){
+            $sql.=" and iddm = '".$iddm."'";
+        }
+        $sql.=" order by id desc";
         $listsanpham =  pdo_query($sql);
         return $listsanpham;
     }
 
-    function loadOne_pro($id){
-        $sql = "SELECT * FROM sanpham WHERE id= " .$id;
-        $dm =  pdo_query($sql);
-        return $dm;
-    }
-
-    function add_pro($name, $price, $img, $mota){
-        $sql= "INSERT INTO sanpham(name) values (?) (?) (?) (?) (?)";
-        pdo_execute($name, $price, $img, $mota);
+    function add_pro($tensp, $giasp, $hinh, $mota,$iddm){
+        $sql= "INSERT INTO sanpham(name,price,img,mota,iddm) values ('$tensp', '$giasp', '$hinh', '$mota','$iddm')";
+        pdo_execute($sql);
     }
     
     
@@ -22,6 +23,12 @@
         pdo_query($sql);
     }
 
+    function loadOne_pro($id){
+        $sql = "SELECT * FROM sanpham WHERE id= " .$id;
+        $dm =  pdo_query($sql);
+        return $dm;
+    }
+    
     function update_pro($id,$tenloai){
         $sql = "UPDATE sanpham SET name='".$tenloai."' where id=" .$id;
         pdo_execute($sql);

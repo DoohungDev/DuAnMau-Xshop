@@ -1,6 +1,18 @@
 <section class="main-content max-w-6xl mx-auto">
     <h1 class="text-xl uppercase bg-green-100 px-2 py-4 my-3 border rounded-lg">Danh sách loại hàng</h1>
     <div class="relative overflow-x-auto">
+        <form action="index.php?act=listsp" method="post"  class="my-3">
+            <input type="text" name="kyw" name class="border rounded-lg px-2 py-2" placeholder="Search...">
+            <select name="iddm" id="" class="border px-4 py-2 rounded-lg">
+                <option value="0" selected>Tất cả</option>
+                    <?php foreach( $listdanhmuc as $danhmuc) {
+                        extract($danhmuc)    
+                    ?>
+                    <option value="<?=$danhmuc['id']?>"><?=$danhmuc['name']?></option>
+                    <?php }?>
+                </select>
+                <input type="submit" name="listok" value="Search" class="border rounded-lg px-2 py-2">
+        </form>
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-green-100  dark:text-gray-400">
                 <tr>
@@ -35,6 +47,8 @@
                     extract($sanpham);
                     $suasp = "index.php?act=suasp&id=" .$id;  
                     $xoasp = "index.php?act=xoasp&id=" .$id;  
+                    $imgPath = "../uploads/" .$img;
+                    
                 ?>
                 <tr class="bg-white border-b dark:border-gray-700">
                     <td scope="row" class="px-6 py-4 font-medium text-black-900 ">
@@ -49,14 +63,14 @@
                     <td class="px-6 text-black py-4">
                         <?=$sanpham['price']?>
                     </td>
-                    <td class="px-6 text-black py-4">
-                        <?=$sanpham['img']?>
-                    </td>
-                    <td class="px-6 text-black py-4">
-                        <?=$sanpham['luotxem']?>
+                    <td class="px-6 text-black py-4 w-[10%]">
+                        <img src="<?=$imgPath?>" alt="">
                     </td>
                     <td class="px-6 text-black py-4">
                         <?=$sanpham['mota']?>
+                    </td>
+                    <td class="px-6 text-black py-4">
+                        <?=$sanpham['luotxem']?>
                     </td>
                     <td class="px-6 py-4">
                         <button class="px-2">
