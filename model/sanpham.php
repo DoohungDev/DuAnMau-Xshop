@@ -29,8 +29,8 @@
         return $dm;
     }
     
-    function update_pro($id,$tenloai){
-        $sql = "UPDATE sanpham SET name='".$tenloai."' where id=" .$id;
+    function update_pro($id,$tensp){
+        $sql = "UPDATE sanpham SET name='".$tensp."' where id=" .$id;
         pdo_execute($sql);
 
     }

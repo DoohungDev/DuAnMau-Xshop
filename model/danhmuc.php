@@ -6,7 +6,7 @@
     }
 
     function loadOne_cate($id){
-        $sql = "SELECT * FROM danhmuc WHERE id= " .$id;
+        $sql = "SELECT * FROM danhmuc WHERE id=".$id;
         $dm =  pdo_query($sql);
         return $dm;
     }
@@ -23,9 +23,8 @@
     }
 
     function update_cate($id,$tenloai){
-        $sql = "UPDATE danhmuc SET name='".$tenloai."' where id=" .$id;
+        $sql = "UPDATE danhmuc SET name='".$tenloai."' where id=".$id;
         pdo_execute($sql);
-
     }
 
 ?>

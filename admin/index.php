@@ -95,7 +95,7 @@
 
             case'suasp' :
                 if(isset($_GET['id']) && ($_GET['id'] > 0) ){
-                    $sanpham = loadOne_pro($_GET['id']);
+                    $sp = loadOne_pro($_GET['id']);
                 }
                 include"sanpham/update.php";
                 break;
