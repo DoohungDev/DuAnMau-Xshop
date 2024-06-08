@@ -4,7 +4,7 @@
     </div>
     <div class="row form_content">
         <div class="row">
-           <table>
+        <table>
             <tr>
                 <th>Mã danh mục</th>
                 <th>Tên danh mục</th>
@@ -26,7 +26,7 @@
                         </tr>';
                 }
             ?>
-           </table>
+        </table>
         </div>
         <div class="row">
                     <a href="index.php?act=bieudo"><input type="button" value="Xem biểu đồ"></a>

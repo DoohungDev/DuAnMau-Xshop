@@ -20,6 +20,6 @@
                 <li><a href="index.php?act=user">Khách hàng</a></li>
                 <li><a href="index.php?act=cmt">Bình luận</a></li>
                 <li><a href="index.php?act=thongke">Thống kê</a></li>
-                <li><a href="index.php?act=listbill">Đơn hàng</a></li>
+                <li><a href="#">Đơn hàng</a></li>
             </ul>
         </div>

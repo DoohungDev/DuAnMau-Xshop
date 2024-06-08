@@ -4,7 +4,7 @@ include "../model/danhmuc.php";
 include "../model/sanpham.php";
 include "../model/binhluan.php";
 include "../model/user.php";
-include "../model/cart.php";
+include "../model/dashboard.php";
 include "header.php";
 
 if (isset($_GET['act'])) {
@@ -135,23 +135,6 @@ if (isset($_GET['act'])) {
             }
             $listbinhluan= loadall_binhluan(0);
             include "binhluan/list.php";
-            break;
-        case 'listbill':
-            if(isset($_POST['kyw'])&& ($_POST['kyw']!="")){
-                $kyw=$_POST['kyw'];
-            }
-            else{
-                $kyw="";
-            }
-            $listbill=load_all_bill($kyw,0);
-            include 'bill/listbill.php';
-            break;
-        case 'delete_bill':
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                delete_bill($_GET['id']);
-            }
-            $listbill= load_all_bill();
-            include "bill/listbill.php";
             break;
         case 'thongke':
             $listhongke=loadall_thongke();

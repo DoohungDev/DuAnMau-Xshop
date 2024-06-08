@@ -27,7 +27,7 @@
                     </div>
                     <div class="row">
                         <h5>Điện thoại</h5>
-                        <input type="text" name="tel" id="" value="<?=$phone?>">
+                        <input type="text" name="phone" id="" value="<?=$phone?>">
                     </div>
                     <input type="hidden" name="id" value="<?=$id?>">
                     <input type="submit" name="edit_user" value="Cập nhật">

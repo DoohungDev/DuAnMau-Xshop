@@ -2,7 +2,7 @@
 session_start();
 include "model/pdo.php";
 include "model/sanpham.php";
-include "model/cart.php";
+include "model/dashboard.php";
 include "model/danhmuc.php";
 include "model/binhluan.php";
 include "model/user.php";

@@ -13,8 +13,8 @@
             $sp=pdo_query_one($sql);
             return $sp;
         }
-        function update_user($email,$user,$pass,$address,$tel,$id){
-            $sql="update user set email='".$email."', user='".$user."', pass='".$pass."', address='".$address."', tel='".$tel."'  where id=".$id;   
+        function update_user($email,$user,$pass,$address,$phone,$id){
+            $sql="update user set email='".$email."', user='".$user."', pass='".$pass."', address='".$address."', phone='".$phone."'  where id=".$id;   
             pdo_execute($sql);
         }
         function loadall_taikhoan(){
