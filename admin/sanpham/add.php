@@ -1,47 +1,46 @@
-<!-- main -->
-<section class="main-content max-w-6xl mx-auto">
-    <h1 class="text-xl uppercase bg-green-100 px-2 py-4 my-3 border rounded-lg">Thêm mới sản phẩm</h1>
-    <div class="form-add">
-        <form action="index.php?act=addsp" method="post" enctype="multipart/form-data">
-            <div class="form my-4">
-                <span>Danh mục</span><br>
-                <select name="iddm" id="" class="border px-4 py-2 rounded-lg">
-                    <?php foreach( $listdanhmuc as $danhmuc) {
-                        extract($danhmuc)    
+<div class="row"></div>
+            <div class="row title">
+                <h1>Thêm mới sản phẩm</h1>
+            </div>
+            <div class="row form_content">
+                <form action="index.php?act=addsp" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        Danh mục <br>
+                        <select name="id_danh_muc" id="">
+                            <?php
+                                foreach ($listdanhmuc as $danhmuc) {
+                                    extract($danhmuc);
+                                    echo '<option value="'.$id.'">'.$name.'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="row">
+                        Tên sản phẩm <br>
+                        <input type="text" name="tensp">
+                    </div>
+                    <div class="row">
+                        Giá <br>
+                        <input type="text" name="price">
+                    </div>
+                    <div class="row">
+                        Ảnh <br>
+                       <input type="file" name="hinh" id="">
+                    </div>
+                    <div class="row">
+                        Mô tả <br>
+                        <textarea name="mota" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="row">
+                        <input type="submit" name="add" value="Thêm mới">
+                        <input type="reset" value="Nhập lại">
+                        <a href="index.php?act=listsp"><input type="button" name="listdm" value="Danh sách"></a>
+                    </div>
+                    <?php
+                        if(isset($thong_bao)&&($thong_bao!= ""))
+                        echo $thong_bao;
                     ?>
-                    <option value="<?=$danhmuc['id']?>"><?=$danhmuc['name']?></option>
-                    <?php }?>
-                </select>
-                <br>
-                <span>Tên sản phẩm</span><br>
-                <input type="text" name="tensp" placeholder="Nhập tên sản phẩm"
-                    class="border rounded-lg w-full px-2 py-2"><br>
-                <span>Giá sản phẩm</span><br>
-                <input type="text" name="giasp" placeholder="Nhập tên sản phẩm"
-                    class="border rounded-lg w-full px-2 py-2"><br>
-                <span>Ảnh sản phẩm</span><br>
-                <input type="file" name="hinh" placeholder="Nhập tên sản phẩm"
-                    class="border rounded-lg w-full px-2 py-2"><br>
-                <span>Mô tả sản phẩm</span><br>
-                <textarea name="mota" id="" placeholder="Nhập tên sản phẩm"
-                    class="border rounded-lg w-full px-2 py-2"></textarea>
-                <!-- <span>Tên sản phẩm</span><br>
-                <input type="text" name="tensp" placeholder="Nhập tên sản phẩm" class="border rounded-lg w-full px-2 py-2"><br> -->
+                </form>
             </div>
-            <div class="button my-4">
-                <input class="border rounded-lg px-3 py-2 mx-1 hover:bg-gray-400 hover:text-white" type="submit"
-                    value="THÊM MỚI" name="themmoi">
-                <input class="border rounded-lg px-3 py-2 mx-1 hover:bg-gray-400 hover:text-white" type="reset"
-                    value="NHẬP LẠI">
-                <a href="index.php?act=listsp"><input
-                        class="border rounded-lg px-3 py-2 mx-1 hover:bg-gray-400 hover:text-white" type="button"
-                        value="DANH SÁCH"></a>
-            </div>
-            <?php   
-                if(isset($thongbao) && ($thongbao != "")){
-                    echo $thongbao;
-                }
-            ?>
-        </form>
+        </div>
     </div>
-</section>

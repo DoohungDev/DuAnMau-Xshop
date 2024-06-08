@@ -1,46 +1,58 @@
-
-<!-- main -->
-<section class="main-content max-w-6xl mx-auto">
-    <h1 class="text-xl uppercase bg-green-100 px-2 py-4 my-3 border rounded-lg">Cập nhật sản phẩm</h1>
-    <div class="form-add">
-        <form action="index.php?act=updatesp" method="post">
-        <?php
-            foreach($sp as $sp){
-        ?>
-            <div class="form my-4">
-                <!-- <span>Mã sản phẩm</span><br>
-                <input type="text" name="masp" id="" placeholder="Auto number update"
-                    class="border rounded-lg w-full px-2 py-2" disabled><br> -->
-                <span>Tên sản phẩm</span><br>
-                <input type="text" name="tensp" value="<?=$sp['name']?>" placeholder="Nhập tên sản phẩm"
-                    class="border rounded-lg w-full px-2 py-2"><br>
-                <span>Giá sản phẩm</span><br>
-                <input type="text" name="giasp" value="<?=$sp['price']?>" placeholder="Nhập tên sản phẩm"
-                    class="border rounded-lg w-full px-2 py-2"><br>
-                <span>Ảnh sản phẩm</span><br>
-                <input type="file" name="hinh" placeholder="Nhập tên sản phẩm"
-                    class="border rounded-lg w-full px-2 py-2" enctype="multipart/form-data"><br>
-                <span>Mô tả sản phẩm</span><br>
-                <textarea name="mota" id="" value="<?=$sp['mota']?>" placeholder="Nhập tên sản phẩm"
-                    class="border rounded-lg w-full px-2 py-2"></textarea>
-                <!-- <span>Tên sản phẩm</span><br>
-                <input type="text" name="tensp" placeholder="Nhập tên sản phẩm" class="border rounded-lg w-full px-2 py-2"><br> -->
+<?php
+    if(is_array($sp)){
+        extract($sp);
+    }
+    $hinhpath="../upload/".$img;
+    if(is_file($hinhpath)){
+        $hinh="<img src='".$hinhpath."' height='80'>";
+    }
+    else{
+        $hinh="No photo";
+    }
+?>
+<div class="row"></div>
+            <div class="row title">
+                <h1>Cập nhật loại hàng hóa</h1>
             </div>
-            <div class="button my-4">
-                <input class="border rounded-lg px-3 py-2 mx-1 hover:bg-gray-400 hover:text-white" type="submit"
-                    value="CẬP NHẬT MỚI" name="themmoi">
-                <input class="border rounded-lg px-3 py-2 mx-1 hover:bg-gray-400 hover:text-white" type="reset"
-                    value="NHẬP LẠI">
-                <a href="index.php?act=listsp"><input
-                        class="border rounded-lg px-3 py-2 mx-1 hover:bg-gray-400 hover:text-white" type="button"
-                        value="DANH SÁCH"></a>
+            <div class="row form_content">
+            <form action="index.php?act=updatesp" method="post" enctype="multipart/form-data">
+                <select name="id_danh_muc">
+                        <option value="0" selected>Tất cả</option>
+                        <?php
+                            foreach ($listdanhmuc as $danhmuc) {
+                                extract($danhmuc);
+                                echo '<option value="'.$id.'">'.$name.'</option>';
+                            }
+                        ?>
+                </select>
+                    <div class="row">
+                        Tên sản phẩm <br>
+                        <input type="text" name="tensp" value="<?=$namesp?>">
+                    </div>
+                    <div class="row">
+                        Giá <br>
+                        <input type="text" name="price" value="<?=$price?>">
+                    </div>
+                    <div class="row">
+                        Ảnh <br>
+                        <?=$hinh?> <br>
+                       <input type="file" name="hinh" id="" >
+                    </div>
+                    <div class="row">
+                        Mô tả <br>
+                        <textarea name="mota" id="" cols="30" rows="10"><?=$mo_ta?></textarea>
+                    </div>
+                    <div class="row">
+                        <input type="hidden" name="id" value="<?=$_GET['id'];?>">
+                        <input type="submit" name="cap_nhat" value="Cập nhật">
+                        <input type="reset" value="Nhập lại">
+                        <a href="index.php?act=listsp"><input type="button" name="listdm" value="Danh sách"></a>
+                    </div>
+                    <?php
+                        if(isset($thongbao)&&($thongbao!= ""))
+                        echo $thongbao;
+                    ?>
+                </form>
             </div>
-            <?php   
-                if(isset($thongbao) && ($thongbao != "")){
-                    echo $thongbao;
-                }
-            ?>
-            <?php }?>
-        </form>
+        </div>
     </div>
-</section>

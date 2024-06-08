@@ -1,30 +1,24 @@
-<?php
-    function loadAll_cate(){
-        $sql = "SELECT * FROM danhmuc order by id ASC";
-        $listdanhmuc =  pdo_query($sql);
+<?php 
+    function insert_danhmuc($ten_loai){
+        $sql="insert into danh_muc(name) values('$ten_loai')";
+        pdo_execute($sql);
+    }
+    function delete_danhmuc($id){
+        $sql="delete from danh_muc where id=".$id;
+        pdo_execute($sql);
+    }
+    function loadall_danhmuc(){
+        $sql="select * from danh_muc order by id asc";
+        $listdanhmuc=pdo_query($sql);
         return $listdanhmuc;
     }
-
-    function loadOne_cate($id){
-        $sql = "SELECT * FROM danhmuc WHERE id=".$id;
-        $dm =  pdo_query($sql);
+    function loadone_danhmuc($id){
+        $sql="select * from danh_muc where id=".$id;
+        $dm=pdo_query_one($sql);
         return $dm;
     }
-
-    function add_cate($tenloai){
-        $sql= "INSERT INTO danhmuc(name) values ('$tenloai')";
+    function update_danhmuc($id, $ten_loai){
+        $sql="update danh_muc set name='".$ten_loai."' where id=".$id;
         pdo_execute($sql);
     }
-    
-    
-    function delete_cate($id){
-        $sql = "DELETE FROM danhmuc where id =".$_GET['id'];
-        pdo_query($sql);
-    }
-
-    function update_cate($id,$tenloai){
-        $sql = "UPDATE danhmuc SET name='".$tenloai."' where id=".$id;
-        pdo_execute($sql);
-    }
-
 ?>

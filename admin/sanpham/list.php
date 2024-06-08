@@ -1,100 +1,65 @@
-<section class="main-content max-w-6xl mx-auto">
-    <h1 class="text-xl uppercase bg-green-100 px-2 py-4 my-3 border rounded-lg">Danh sách loại hàng</h1>
-    <div class="relative overflow-x-auto">
-        <form action="index.php?act=listsp" method="post"  class="my-3">
-            <input type="text" name="kyw" name class="border rounded-lg px-2 py-2" placeholder="Search...">
-            <select name="iddm" id="" class="border px-4 py-2 rounded-lg">
-                <option value="0" selected>Tất cả</option>
-                    <?php foreach( $listdanhmuc as $danhmuc) {
-                        extract($danhmuc)    
+<div class="row">
+    <div class="row title mb">
+        <h1>DANH SÁCH SẢN PHẨM</h1>
+    </div>
+    <div class="row form_content">
+        <div class="row">
+            <form action="index.php?act=listsp" method="post">
+                <input type="text" name="keyword" placeholder="Nhập tên sản phẩm muốn tìm">
+                <select name="id_danh_muc">
+                    <option value="0" selected>Tất cả</option>
+                    <?php
+                    foreach ($listdanhmuc as $danhmuc) {
+                        extract($danhmuc);
+                        echo '<option value="' . $id . '">' . $name . '</option>';
+                    }
                     ?>
-                    <option value="<?=$danhmuc['id']?>"><?=$danhmuc['name']?></option>
-                    <?php }?>
                 </select>
-                <input type="submit" name="listok" value="Search" class="border rounded-lg px-2 py-2">
-        </form>
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-green-100  dark:text-gray-400">
+                <input type="submit" name="listok" value="OK">
+            </form>
+            <table>
                 <tr>
-                    <th scope="col" class="px-6 py-3">
-                        Lựa chọn
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Mã sản phẩm
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Tên sản phẩm
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Giá
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Ảnh
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Mô tả
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Lượt xem
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Hành động
-                    </th>
+                    <th></th>
+                    <th>Mã sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Ảnh</th>
+                    <th>Giá</th>
+                    <th>Lượt xem</th>
+                    <th></th>
                 </tr>
-            </thead>
-            <tbody>
-                <?php foreach($listsanpham as $sanpham) { 
+                <?php
+                foreach ($listsanpham as $sanpham) {
                     extract($sanpham);
-                    $suasp = "index.php?act=suasp&id=" .$id;  
-                    $xoasp = "index.php?act=xoasp&id=" .$id;  
-                    $imgPath = "../uploads/" .$img;
-                    
+                    $capnhatsp = "index.php?act=capnhatsp&id=" . $id;
+                    $deletesp = "index.php?act=deletesp&id=" . $id;
+                    $hinhpath = "../upload/" . $img;
+                    if (is_file($hinhpath)) {
+                        $hinh = "<img src='" . $hinhpath . "' height='80'>";
+                    } else {
+                        $hinh = "No photo";
+                    }
+                    echo '
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>' . $id . '</td>
+                                <td>' . $namesp . '</td>
+                                <td>' . $hinh . '</td>
+                                <td>' . $price . '</td>
+                                <td>' . $view . '</td>
+                                <td>
+                                    <a href="' . $capnhatsp . '"><input type="button" value="Sửa"></a>
+                                    <a href="' . $deletesp . '"><input type="button" value="Xóa"></a>
+                                </td
+                            </tr>';
+                }
                 ?>
-                <tr class="bg-white border-b dark:border-gray-700">
-                    <td scope="row" class="px-6 py-4 font-medium text-black-900 ">
-                        <input type="checkbox">
-                    </td>
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 ">
-                        <?=$sanpham['id']?>
-                    </td>
-                    <td class="px-6 text-black py-4">
-                        <?=$sanpham['name']?>
-                    </td>
-                    <td class="px-6 text-black py-4">
-                        <?=$sanpham['price']?>
-                    </td>
-                    <td class="px-6 text-black py-4 w-[10%]">
-                        <img src="<?=$imgPath?>" alt="">
-                    </td>
-                    <td class="px-6 text-black py-4">
-                        <?=$sanpham['mota']?>
-                    </td>
-                    <td class="px-6 text-black py-4">
-                        <?=$sanpham['luotxem']?>
-                    </td>
-                    <td class="px-6 py-4">
-                        <button class="px-2">
-                            <a href="<?=$suasp?>"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline border rounded-lg px-4 py-2  ">Sửa</a>
-                        </button>
-                        <button>
-                            <a href="<?=$xoasp?>"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline border rounded-lg px-4 py-2  ">Xóa</a>
-                        </button>
-                    </td>
-                </tr>
-                <?php }?>
-            </tbody>
-        </table>
+            </table>
+        </div>
+        <div class="row">
+            <input type="button" value=" Chọn tất cả">
+            <input type="button" value="Bỏ chọn tất cả">
+            <input type="button" value="Xóa các mục đã chọn">
+            <a href="index.php?act=addsp"><input type="button" value="Nhập thêm"></a>
+        </div>
     </div>
-    <div class="button my-4">
-        <input class="border rounded-lg px-3 py-2 mx-1 hover:bg-gray-400 hover:text-white" type="button"
-            value="Chọn tất cả">
-        <input class="border rounded-lg px-3 py-2 mx-1 hover:bg-gray-400 hover:text-white" type="button"
-            value="Bỏ chọn tất cả">
-        <input class="border rounded-lg px-3 py-2 mx-1 hover:bg-gray-400 hover:text-white" type="button"
-            value="Xóa các mục đã chọn">
-        <a href="index.php?act=addsp"><input class="border rounded-lg px-3 py-2 mx-1 hover:bg-gray-400 hover:text-white"
-                type="button" value="Nhập thêm"></a>
-    </div>
-</section>
+</div>
