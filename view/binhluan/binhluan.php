@@ -16,17 +16,25 @@ $dsbl=loadall_binhluan($idpro);
 </head>
 
 <body>
-    <div class="row mb">
-        <div class="boxtitle">Bình Luận</div>
-        <div class="boxcontent2 list">
-            <table border="">
+    <div class="row mb border my-4">
+        <div class="tittle bg-gray-400 px-2 py-3">
+            <h1 class="uppercase">Mô tả chi tiết</h1>
+        </div> 
+        <div class="boxcontent2 list px-6">
+            <table  class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 my-3 px-4">
                 <?php
                     foreach ($dsbl as $bl) {
                         extract($bl);
-                        echo '<tr><td>'.$noidung.'</td>';
-                        echo '<td>'.$id_user.'</td>';
-                        echo '<td>'.$ngay_binh_luan.'</td><tr>';
-                    }
+                        echo '
+                            <tbody>
+                                <tr class="bg-white border dark:border-gray-500 text-black">
+                                    <td class="px-7 py-4 text-black">'.$noidung.'</td>
+                                    <td class="px-8 py-4 text-black">'.$id_user.'</td>
+                                    <td class="px-8 py-4 text-black">'.$ngay_binh_luan.'</td>
+                                <tr>
+                            </tbody>
+                        ';
+                    } 
                 ?>
             </table>
         </div>
@@ -35,10 +43,10 @@ $dsbl=loadall_binhluan($idpro);
                 if(isset($_SESSION['user'])){
                     extract($_SESSION['user']);
             ?>
-            <form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
+            <form action="<?=$_SERVER['PHP_SELF'];?>" method="post" class="px-3 py-2">
                 <input type="hidden" name="idpro" value="<?=$idpro?>">
-                <input type="text" name="noidung">
-                <input type="submit" name="guibinhluan" style="margin-top:20px ;" value="Gửi bình luận">
+                <input class="border w-full px-2 py-4 mt-3" placeholder="Enter the comment..." type="text" name="noidung">
+                <input class="border rounded-lg px-2 py-2" type="submit" name="guibinhluan" style="margin-top:20px ;" value="Gửi bình luận">
             </form>
             <?php
                 }else echo "Vui lòng đăng nhập để bình luận";

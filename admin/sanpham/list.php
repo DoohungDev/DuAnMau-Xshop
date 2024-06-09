@@ -59,7 +59,7 @@
                                     <td class="px-6 py-4 font-medium text-gray-100"><input type="checkbox"></td>
                                     <td class="px-7 py-4 text-black">' . $id . '</td>
                                     <td class="px-7 py-4 text-black">' . $namesp . '</td>
-                                    <td class="px-7 py-4 text-black">' . $hinh . '</td>
+                                    <td class="px-7 py-4 text-black w-[10%]">' . $hinh . '</td>
                                     <td class="px-7 py-4 text-black">' . $price . '</td>
                                     <td class="px-7 py-4 text-black">' . $view . '</td>
                                     <td class="px-7 py-4 text-black">

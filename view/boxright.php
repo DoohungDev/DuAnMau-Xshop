@@ -88,9 +88,9 @@
             $linksp = "index.php?act=sanphamct&idsp=" . $id;
             echo '        
                     <div class="">
-                        <div class=" border-b-2 px-5 py-3 flex">
-                            <a href="' . $linksp . '"><img src="'. $img .'"></a>
-                            <a href="' . $linksp . '" class="px-2">' . $namesp . '</a>
+                        <div class=" border-b-2 pl-2 py-3 grid grid-cols-3 gap-4">
+                            <div class="w-[80%] px-2"><a  href="' . $linksp . '"><img src="'. $img .'"></a></div>
+                            <div class="col-span-2"><a href="' . $linksp . '" class="px-2">' . $namesp . '</a></div>
                         </div>
                     </div>
                 ';

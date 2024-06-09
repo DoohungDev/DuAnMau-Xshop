@@ -81,6 +81,7 @@
             </div>
             <!-- List product -->
             <div class="list-products">
+                <div class="flex grid grid-cols-3 gap-6">
                 <?php
                     $i = 0;
                     foreach ($spnew as $sp) {
@@ -93,7 +94,6 @@
                             $mr = "mr";
                         }
                         echo  ' 
-                            <div class="grid grid-cols-3 gap-6">
                                 <div class="product text-center font-bold border rounded-lg shadow-xl">
                                     <div class="grid justify-items-center">
                                         <!-- img Product -->
@@ -111,10 +111,10 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
-                            ';
-                    }
-                ?>
+                                ';
+                                }
+                                ?>
+                </div>
             </div>
         </div>
         <!-- Box-right -->
