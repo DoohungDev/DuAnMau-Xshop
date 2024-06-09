@@ -14,7 +14,7 @@ if (isset($_GET['act'])) {
             if (isset($_POST['add']) && ($_POST['add'])) {
                 $ten_loai = $_POST['tenloai'];
                 insert_danhmuc($ten_loai);
-                $thong_bao = "Thêm thành công";
+                $thongbao = "Thêm thành công";
             }
             include 'danhmuc/add.php';
             break;
