@@ -23,7 +23,7 @@
                     </div>
                     <div class="row">
                         Ảnh <br>
-                       <input type="file" name="hinh" id="" class="border rounded-lg w-full px-2 py-2">
+                    <input type="file" name="hinh" id="" class="border rounded-lg w-full px-2 py-2">
                     </div>
                     <div class="row">
                         Mô tả <br>
