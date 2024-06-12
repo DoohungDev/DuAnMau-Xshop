@@ -21,6 +21,6 @@
                 <li><a class="px-3 hover:text-xl" href="index.php?act=user">Khách hàng</a></li>
                 <li><a class="px-3 hover:text-xl" href="index.php?act=cmt">Bình luận</a></li>
                 <li><a class="px-3 hover:text-xl" href="index.php?act=thongke">Thống kê</a></li>
-                <li><a class="px-3 hover:text-xl" href="#">Đơn hàng</a></li>
+                <!-- <li><a class="px-3 hover:text-xl" href="#">Đơn hàng</a></li> -->
             </ul>
     </div>

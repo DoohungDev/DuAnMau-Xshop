@@ -31,10 +31,10 @@
                         Giá <br>
                         <input type="text" class="border rounded-lg w-full px-2 py-2" name="price" value="<?=$price?>">
                     </div>
-                    <div class="row">
+                    <div class="row w-[20%]">
                         Ảnh <br>
                         <?=$hinh?> <br>
-                       <input type="file" class="border rounded-lg w-full px-2 py-2" name="hinh" id="" >
+                    <input  type="file" class="border rounded-lg px-2 py-2 " name="hinh" id="" >
                     </div>
                     <div class="row">
                         Mô tả <br>
